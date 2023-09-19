@@ -79,6 +79,7 @@ Below are the ad-hoc requests that this project addresses along with their outpu
     ![image](https://github.com/ZuhairBhati/Ad-hoc-Insights-Analysis/assets/123544025/58212e2d-877b-41b8-8bec-b76cc5dc8dda)
 
 
-## License
+## Technologies Used
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+-  ![](<https://img.shields.io/badge/MySQL-4479A1.svg?style=for-the-badge&logo=MySQL&logoColor=white>)
+
