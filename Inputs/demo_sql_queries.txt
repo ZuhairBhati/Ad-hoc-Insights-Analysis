@@ -1,0 +1,48 @@
+This document contains the demo business questions which are helpful for reference purpose.
+
+
+1. Generate a yearly report for 'croma' customer where the output contains these fields:
+           fiscal_year
+           yearly_gross_sales
+   make sure that yearly_gross_sales are in millions (divide the total by 1000000)
+
+Query:
+    -- Step1: Get the customer code for croma
+            select 
+                customer_code 
+            From gdb023.dim_customer
+            where customer = 'croma';
+
+
+     -- step2: Generate the yearly report
+             select
+                 s.fiscal_year,
+                 ROUND(SUM(g.gross_price * s.sold_quantity)/1000000,2) as yearly_gross_sales
+             from gdb023.fact_sales_monthly s
+             join gdb023.fact_gross_price g
+             on 
+                g.fiscal_year=s.fiscal_year and
+                g.product_code=s.product_code
+             where
+                customer_code=90002002
+             group by fiscal_year
+             order by fiscal_year;
+
+
+
+2. Generate a report which contain fiscal year and also the number of unique products sold in that year. 
+
+This helps Atliq hardwares regarding the development of new products and its growth year on year
+
+Query:
+    select
+	
+        fiscal_year,
+	
+        COUNT(DISTINCT product_code) as unique_product_count
+
+    from gdb023.fact_sales_monthly 
+
+    Group by fiscal_year;
+
+
